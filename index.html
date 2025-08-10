@@ -7,12 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <!-- Favicon using emoji as data URL -->
-<link rel="icon" href="data:image/svg+xml,
-  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
-    <text y='.9em' font-size='90'>❤️</text>
-  </svg>">
-
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -22,14 +16,17 @@
         :root {
             --primary-color: #F5CBCB;
             --secondary-color: #ffffff;
+            --font-size-sm: clamp(0.8rem, 2vw, 1rem);
+            --font-size-md: clamp(1rem, 3vw, 1.5rem);
+            --font-size-lg: clamp(1.5rem, 4vw, 2rem);
+            --font-size-xl: clamp(2rem, 6vw, 3rem);
+            --font-size-xxl: clamp(3rem, 8vw, 4.5rem);
         }
         
         body {
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
-            background-color: var(--secondary-color);
-            background-color: #F5CBCB;
-
+            background-color: var(--primary-color);
         }
         
         .dancing-font {
@@ -108,253 +105,6 @@
         }
         
         .vinyl {
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(0deg, #333 0%, #000 100%);
-            border-radius: 50%;
-            position: relative;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            animation: spin 10s linear infinite;
-            animation-play-state: paused;
-        }
-        
-        .vinyl-label {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            background-color: var(--primary-color);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-        
-        .vinyl-hole {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: white;
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .player-active .vinyl {
-            animation-play-state: running;
-        }
-        
-        .gift-box {
-            width: 200px;
-            height: 200px;
-            position: relative;
-            perspective: 1000px;
-            cursor: pointer;
-        }
-        
-        .gift-lid {
-            width: 200px;
-            height: 50px;
-            background: linear-gradient(135deg, #ff3366 0%, #ff6699 100%);
-            position: absolute;
-            top: 0;
-            left: 0;
-            transform-origin: bottom center;
-            transition: transform 0.5s ease;
-            box-shadow: 0 5px 20px rgba(255, 51, 102, 0.3);
-            z-index: 2;
-        }
-        
-        .gift-body {
-            width: 200px;
-            height: 150px;
-            background: linear-gradient(135deg, #ff6699 0%, #ff3366 100%);
-            position: absolute;
-            top: 50px;
-            left: 0;
-            box-shadow: 0 10px 30px rgba(255, 51, 102, 0.2);
-        }
-        
-        .gift-bow {
-            width: 200px;
-            height: 30px;
-            background: var(--primary-color);
-            position: absolute;
-            top: 35px;
-            left: 0;
-            z-index: 3;
-        }
-        
-        .gift-bow-center {
-            width: 40px;
-            height: 40px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            position: absolute;
-            top: 15px;
-            left: 80px;
-            z-index: 4;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .gift-open .gift-lid {
-            transform: rotateX(110deg);
-        }
-        
-        .gift-content {
-            position: absolute;
-            width: 180px;
-            height: 130px;
-            background: white;
-            top: 60px;
-            left: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.5s ease 0.3s;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .gift-open .gift-content {
-            opacity: 1;
-        }
-        
-        .polaroid {
-            background: white;
-            padding: 15px 15px 60px 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            transform: rotate(-5deg);
-            transition: transform 0.3s ease;
-        }
-        
-        .polaroid:hover {
-            transform: rotate(0deg) scale(1.05);
-        }
-        
-        .polaroid:nth-child(even) {
-            transform: rotate(5deg);
-        }
-        
-        .polaroid:nth-child(even):hover {
-            transform: rotate(0deg) scale(1.05);
-        }
-        
-        .polaroid-caption {
-            text-align: center;
-            margin-top: 10px;
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.2rem;
-            color: #333;
-        }
-        
-        .floating-hearts {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        .heart-particle {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            opacity: 0;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff3366"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat center center;
-            background-size: contain;
-        }
-        
-        .timeline-item {
-            position: relative;
-            padding-left: 50px;
-            margin-bottom: 30px;
-        }
-        
-        .timeline-item:before {
-            content: '';
-            position: absolute;
-            left: 15px;
-            top: 0;
-            width: 2px;
-            height: 100%;
-            background: var(--primary-color);
-        }
-        
-        .timeline-dot {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 14px;
-        }
-        
-        .parallax {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        
-        .typewriter {
-            overflow: hidden;
-            border-right: 3px solid var(--primary-color);
-            white-space: nowrap;
-            margin: 0 auto;
-            letter-spacing: 2px;
-            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-        }
-        
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-        
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--primary-color) }
-        }
-        
-        .glow {
-            text-shadow: 0 0 10px rgba(245, 203, 203, 0.8);
-        }
-        
-        .particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
-    </style>
-</head>
-<body class="relative overflow-x-hidden">
-    <!-- Floating Hearts Background -->
-    <div class="floating-hearts" id="hearts-container"></div>
-    
-    <!-- Music Player -->
-     <style>
-        .vinyl {
             width: 60px;
             height: 60px;
             background: linear-gradient(0deg, #333 0%, #000 100%);
@@ -369,7 +119,7 @@
             position: absolute;
             width: 20px;
             height: 20px;
-            background-color: #F5CBCB;
+            background-color: var(--primary-color);
             border-radius: 50%;
             top: 50%;
             left: 50%;
@@ -402,144 +152,185 @@
             animation-play-state: running;
         }
         
-        .music-player {
-            transition: all 0.3s ease;
+        .gift-box {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            perspective: 1000px;
+            cursor: pointer;
         }
         
-        .music-player:hover {
-            transform: scale(1.1);
+        .gift-lid {
+            width: 150px;
+            height: 40px;
+            background: linear-gradient(135deg, #ff3366 0%, #ff6699 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-origin: bottom center;
+            transition: transform 0.5s ease;
+            box-shadow: 0 5px 20px rgba(255, 51, 102, 0.3);
+            z-index: 2;
         }
         
-        .play-btn {
-            transition: all 0.3s ease;
+        .gift-body {
+            width: 150px;
+            height: 110px;
+            background: linear-gradient(135deg, #ff6699 0%, #ff3366 100%);
+            position: absolute;
+            top: 40px;
+            left: 0;
+            box-shadow: 0 10px 30px rgba(255, 51, 102, 0.2);
         }
         
-        .play-btn:hover {
-            transform: scale(1.1);
-            background-color: #f8a5a5 !important;
+        .gift-bow {
+            width: 150px;
+            height: 20px;
+            background: var(--primary-color);
+            position: absolute;
+            top: 25px;
+            left: 0;
+            z-index: 3;
         }
-    </style>
-    <!-- Mini Circular Music Player -->
-    <div class="fixed bottom-6 right-6 z-50 music-player" id="music-player">
-        <div class="relative">
-            <div class="vinyl" id="vinyl">
-                <div class="vinyl-label dancing-font">K</div>
-                <div class="vinyl-hole"></div>
-            </div>
-            <button class="absolute -bottom-2 -right-2 w-6 h-6 rounded-full bg-pink-500 text-white flex items-center justify-center shadow-lg play-btn" id="play-pause">
-                <i class="fas fa-play text-xs" id="play-icon"></i>
-            </button>
-        </div>
-        <audio id="audio-player" loop>
-            <source src="assets/song.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-    </div>
-
-    <script>
-        // Music Player Functionality
         
-        playPauseBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            
-            if (isPlaying) {
-                audioPlayer.pause();
-                playIcon.classList.remove('fa-pause');
-                playIcon.classList.add('fa-play');
-                musicPlayer.classList.remove('player-active');
-            } else {
-                audioPlayer.play();
-                playIcon.classList.remove('fa-play');
-                playIcon.classList.add('fa-pause');
-                musicPlayer.classList.add('player-active');
-            }
-            isPlaying = !isPlaying;
-        });
+        .gift-bow-center {
+            width: 30px;
+            height: 30px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            left: 60px;
+            z-index: 4;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
         
-        // Allow clicking anywhere on the player to play/pause
-        musicPlayer.addEventListener('click', function() {
-            playPauseBtn.click();
-        });
-    </script>
-    
-    <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <!-- Hero Section -->
-        <!-- Hero Section -->
-<section class="min-h-screen flex flex-col justify-center items-center text-center relative overflow-hidden py-20 bg-#F5CBCB">
-    <!-- Animated Floating Elements -->
-    <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-        <!-- Floating Hearts -->
-        <div class="absolute top-1/4 left-1/5 w-16 h-16 opacity-20 animate-float1">
-            <svg viewBox="0 0 24 24" fill="#ff3366">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-            </svg>
-        </div>
-        <div class="absolute top-1/3 right-1/4 w-12 h-12 opacity-15 animate-float2">
-            <svg viewBox="0 0 24 24" fill="#ff3366">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-            </svg>
-        </div>
-        <div class="absolute bottom-1/4 right-1/5 w-20 h-20 opacity-10 animate-float3">
-            <svg viewBox="0 0 24 24" fill="#ff3366">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-            </svg>
-        </div>
+        .gift-open .gift-lid {
+            transform: rotateX(110deg);
+        }
         
-        <!-- Sparkle Particles -->
-        <div id="sparkles-container" class="absolute top-0 left-0 w-full h-full pointer-events-none"></div>
+        .gift-content {
+            position: absolute;
+            width: 130px;
+            height: 90px;
+            background: white;
+            top: 50px;
+            left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s ease 0.3s;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        }
         
-        <!-- Subtle Floral Elements -->
-        <div class="absolute bottom-0 left-0 w-32 h-32 opacity-10">
-            <svg viewBox="0 0 100 100" fill="#ff3366">
-                <path d="M50 10a10 10 0 0 1 10 10 10 10 0 0 1-10 10 10 10 0 0 1-10-10 10 10 0 0 1 10-10zm30 30a10 10 0 0 1 10 10 10 10 0 0 1-10 10 10 10 0 0 1-10-10 10 10 0 0 1 10-10zm-60 0a10 10 0 0 1 10 10 10 10 0 0 1-10 10 10 10 0 0 1-10-10 10 10 0 0 1 10-10zm30 30a10 10 0 0 1 10 10 10 10 0 0 1-10 10 10 10 0 0 1-10-10 10 10 0 0 1 10-10z"/>
-            </svg>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="relative z-10 px-4">
-        <!-- Animated Heart -->
-        <!-- <div class="heart-animation mb-10 mx-auto">
-            <svg class="w-24 h-24 mx-auto" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" 
-                      fill="#ff3366" 
-                      class="heart-path"/>
-            </svg>
-        </div>
-         -->
-        <!-- Main Heading with Glow Effect -->
-        <h1 class="text-8xl md:text-8xl lg:text-8xl font-bold mb-10 dancing-font text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-red-500 glow-strong">
-            Happy Birthday <span class="text-shadow-lg">Kashish</span>!
-        </h1>
+        .gift-open .gift-content {
+            opacity: 1;
+        }
         
-        <!-- Animated Subheading -->
-        <p class="text-xl md:text-2xl lg:text-3xl mt-10 mb-8 max-w-3xl mx-auto font-medium text-pink-700 animate-fadeIn">
-            Today we celebrate <span class="font-bold text-pink-600">you</span> - the most beautiful soul I know
-        </p>
+        .polaroid {
+            background: white;
+            padding: 15px 15px 40px 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: rotate(-5deg);
+            transition: transform 0.3s ease;
+            margin: 0 auto;
+            max-width: 300px;
+        }
         
-        <!-- Typewriter Effect -->
-        <div class="typewriter-animation text-xl md:text-2xl font-light mb-12 text-pink-800">
-            <span class="typed-text"></span><span class="cursor">&nbsp;</span>
-        </div>
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
         
-        <!-- Confetti Button with Hover Effect -->
-        <button class="px-10 py-4 bg-gradient-to-r from-pink-500 to-red-400 text-white rounded-full font-semibold hover:from-pink-600 hover:to-red-500 transition-all duration-500 transform hover:scale-110 shadow-xl hover:shadow-2xl pulse-lg relative overflow-hidden group" id="confetti-btn">
-            <span class="relative z-10">Click for Magic! ✨</span>
-            <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-full"></span>
-        </button>
-    </div>
-    
-    <!-- Scroll Down Indicator -->
-    <div class="absolute bottom-10 left-0 right-0 flex justify-center">
-        <a href="#wishes" class="animate-bounce-slow inline-block p-3 rounded-full bg-white bg-opacity-30 shadow-md hover:bg-opacity-50 transition-all duration-300">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-        </a>
-    </div>
-
-    <style>
+        .polaroid:nth-child(even) {
+            transform: rotate(5deg);
+        }
+        
+        .polaroid:nth-child(even):hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+        
+        .polaroid-caption {
+            text-align: center;
+            margin-top: 10px;
+            font-family: 'Dancing Script', cursive;
+            font-size: var(--font-size-sm);
+            color: #333;
+        }
+        
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .heart-particle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            opacity: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff3366"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat center center;
+            background-size: contain;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: var(--primary-color);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid var(--primary-color);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 2px;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary-color) }
+        }
+        
+        .glow {
+            text-shadow: 0 0 10px rgba(245, 203, 203, 0.8);
+        }
+        
         /* Animations */
         @keyframes float1 {
             0% { transform: translateY(0) rotate(0deg); }
@@ -566,9 +357,6 @@
             50% { transform: scale(1); }
             75% { transform: scale(1.1); }
             100% { transform: scale(1); }
-        }
-        .heart-animation svg {
-            animation: heartbeat 1.5s ease-in-out infinite;
         }
         
         @keyframes fadeIn {
@@ -616,9 +404,617 @@
             50% { opacity: 0; }
             100% { opacity: 1; }
         }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .gift-box {
+                width: 120px;
+                height: 120px;
+            }
+            .gift-lid {
+                width: 120px;
+                height: 30px;
+            }
+            .gift-body {
+                width: 120px;
+                height: 90px;
+                top: 30px;
+            }
+            .gift-bow {
+                width: 120px;
+                top: 20px;
+            }
+            .gift-bow-center {
+                left: 45px;
+            }
+            .gift-content {
+                width: 100px;
+                height: 70px;
+                top: 40px;
+                left: 10px;
+            }
+            
+            .timeline-item {
+                padding-left: 30px;
+            }
+            
+            .timeline-dot {
+                width: 25px;
+                height: 25px;
+                font-size: 12px;
+            }
+            
+            .photo-frame {
+                border-width: 10px;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .polaroid {
+                padding: 10px 10px 30px 10px;
+            }
+            
+            .message-box {
+                padding: 1.5rem;
+            }
+            
+            .heart {
+                width: 80px;
+                height: 72px;
+            }
+            
+            .heart:before, .heart:after {
+                width: 40px;
+                height: 64px;
+                left: 40px;
+            }
+            
+            .heart:after {
+                left: 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .music-player {
+                bottom: 4rem;
+                right: 1rem;
+            }
+            
+            .timeline-content {
+                padding: 1rem;
+            }
+        }
     </style>
+</head>
+<body class="relative overflow-x-hidden">
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts" id="hearts-container"></div>
+    
+    <!-- Mini Circular Music Player -->
+    <div class="fixed bottom-6 right-6 z-50 music-player" id="music-player">
+        <div class="relative">
+            <div class="vinyl" id="vinyl">
+                <div class="vinyl-label dancing-font">K</div>
+                <div class="vinyl-hole"></div>
+            </div>
+            <button class="absolute -bottom-2 -right-2 w-6 h-6 rounded-full bg-pink-500 text-white flex items-center justify-center shadow-lg play-btn" id="play-pause">
+                <i class="fas fa-play text-xs" id="play-icon"></i>
+            </button>
+        </div>
+        <audio id="audio-player" loop>
+            <source src="assets/song.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
 
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex flex-col justify-center items-center text-center relative overflow-hidden py-12 px-4 sm:py-20">
+            <!-- Animated Floating Elements -->
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+                <!-- Floating Hearts -->
+                <div class="absolute top-1/4 left-1/5 w-10 h-10 sm:w-16 sm:h-16 opacity-20 animate-float1">
+                    <svg viewBox="0 0 24 24" fill="#ff3366">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                </div>
+                <div class="absolute top-1/3 right-1/4 w-8 h-8 sm:w-12 sm:h-12 opacity-15 animate-float2">
+                    <svg viewBox="0 0 24 24" fill="#ff3366">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                </div>
+                <div class="absolute bottom-1/4 right-1/5 w-12 h-12 sm:w-20 sm:h-20 opacity-10 animate-float3">
+                    <svg viewBox="0 0 24 24" fill="#ff3366">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                </div>
+                
+                <!-- Sparkle Particles -->
+                <div id="sparkles-container" class="absolute top-0 left-0 w-full h-full pointer-events-none"></div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="relative z-10 px-4">
+                <!-- Main Heading with Glow Effect -->
+                <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 sm:mb-10 dancing-font text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-red-500 glow-strong">
+                    Happy Birthday <span class="text-shadow-lg">Kashish</span>!
+                </h1>
+                
+                <!-- Animated Subheading -->
+                <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl mt-6 sm:mt-10 mb-6 sm:mb-8 max-w-3xl mx-auto font-medium text-pink-700 animate-fadeIn">
+                    Today we celebrate <span class="font-bold text-pink-600">you</span> - the most beautiful soul I know
+                </p>
+                
+                <!-- Typewriter Effect -->
+                <div class="typewriter-animation text-lg sm:text-xl md:text-2xl font-light mb-8 sm:mb-12 text-pink-800">
+                    <span class="typed-text"></span><span class="cursor">&nbsp;</span>
+                </div>
+                
+                <!-- Confetti Button with Hover Effect -->
+                <button class="px-6 py-3 sm:px-10 sm:py-4 bg-gradient-to-r from-pink-500 to-red-400 text-white rounded-full font-semibold hover:from-pink-600 hover:to-red-500 transition-all duration-500 transform hover:scale-110 shadow-xl hover:shadow-2xl pulse-lg relative overflow-hidden group" id="confetti-btn">
+                    <span class="relative z-10">Click for Magic! ✨</span>
+                    <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-full"></span>
+                </button>
+            </div>
+            
+            <!-- Scroll Down Indicator -->
+            <div class="absolute bottom-6 sm:bottom-10 left-0 right-0 flex justify-center">
+                <a href="#wishes" class="animate-bounce-slow inline-block p-2 sm:p-3 rounded-full bg-white bg-opacity-30 shadow-md hover:bg-opacity-50 transition-all duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-8 sm:w-8 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                </a>
+            </div>
+        </section>
+        
+        <!-- Birthday Wishes Section -->
+        <section id="wishes" class="py-12 sm:py-20">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 dancing-font text-pink-600">Special Wishes for You</h2>
+                <div class="w-16 sm:w-20 h-1 bg-pink-400 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div class="message-box p-4 sm:p-6">
+                    <div class="text-4xl sm:text-5xl text-pink-500 mb-3 sm:mb-4"><i class="fas fa-heart"></i></div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">My Beautiful Kashish</h3>
+                    <p class="text-sm sm:text-base text-gray-700">On your birthday, I want you to know how much you mean to me. Your smile brightens my darkest days and your love fills my life with joy.</p>
+                </div>
+                
+                <div class="message-box p-4 sm:p-6">
+                    <div class="text-4xl sm:text-5xl text-pink-500 mb-3 sm:mb-4"><i class="fas fa-star"></i></div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">You're Amazing</h3>
+                    <p class="text-sm sm:text-base text-gray-700">Your kindness, intelligence, and beauty inspire me every day. I'm so grateful to have you in my life. May all your dreams come true!</p>
+                </div>
+                
+                <div class="message-box p-4 sm:p-6">
+                    <div class="text-4xl sm:text-5xl text-pink-500 mb-3 sm:mb-4"><i class="fas fa-birthday-cake"></i></div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Happy Birthday!</h3>
+                    <p class="text-sm sm:text-base text-gray-700">May this year bring you endless happiness, success in all you do, and love that grows stronger with each passing day.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Photo Gallery Section -->
+        <section class="py-12 sm:py-20">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 dancing-font text-pink-600">Beautiful Memories</h2>
+                <div class="w-16 sm:w-20 h-1 bg-pink-400 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div class="polaroid">
+                    <div class="photo-frame overflow-hidden rounded">
+                        <img src="assets/3.jpg" alt="Kashish" class="w-full h-48 sm:h-64 object-cover">
+                    </div>
+                    <div class="polaroid-caption">My Sunshine</div>
+                </div>
+                
+                <div class="polaroid">
+                    <div class="photo-frame overflow-hidden rounded">
+                        <img src="assets/2.png" alt="Kashish" class="w-full h-48 sm:h-64 object-cover">
+                    </div>
+                    <div class="polaroid-caption">Beautiful Smile</div>
+                </div>
+                
+                <div class="polaroid">
+                    <div class="photo-frame overflow-hidden rounded">
+                        <img src="assets/4.jpg" alt="Kashish" class="w-full h-48 sm:h-64 object-cover">
+                    </div>
+                    <div class="polaroid-caption">My Love</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Portrait Section -->
+        <section class="py-12 sm:py-20">
+            <div class="flex flex-col md:flex-row items-center gap-8 sm:gap-12">
+                <div class="w-full md:w-1/2">
+                    <div class="photo-frame overflow-hidden rounded-lg shadow-xl">
+                        <img src="assets/6.png" alt="Kashish Portrait" class="w-full h-auto">
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 mt-6 md:mt-0">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 dancing-font text-pink-600">My Dearest Kashish</h2>
+                    <p class="text-base sm:text-lg mb-4 sm:mb-6">This portrait captures your essence perfectly - beautiful, elegant, and full of life. Every time I look at you, I'm reminded of how lucky I am to have you in my life.</p>
+                    <p class="text-base sm:text-lg mb-4 sm:mb-6">Your eyes shine brighter than the stars, and your smile warms my heart like the morning sun. You're my everything.</p>
+                    <button class="px-4 py-1 sm:px-6 sm:py-2 bg-pink-500 text-white rounded-full font-semibold hover:bg-pink-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        More About You
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Gift Section -->
+        <section class="py-12 sm:py-20 text-center">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 dancing-font text-pink-600">A Special Gift for You</h2>
+                <div class="w-16 sm:w-20 h-1 bg-pink-400 mx-auto"></div>
+            </div>
+            
+            <div class="flex justify-center mb-8 sm:mb-12">
+                <div class="gift-box" id="gift-box">
+                    <div class="gift-lid"></div>
+                    <div class="gift-bow"></div>
+                    <div class="gift-bow-center"></div>
+                    <div class="gift-body"></div>
+                    <div class="gift-content">
+                        <div class="text-center p-4">
+                            <i class="fas fa-heart text-3xl sm:text-4xl text-pink-500 mb-2"></i>
+                            <p class="font-bold text-sm sm:text-base">My Love is Your Gift!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="text-base sm:text-xl max-w-2xl mx-auto px-4">Click on the gift box to open your special present! This is just a small token of how much you mean to me.</p>
+        </section>
+        
+        <!-- Timeline Section -->
+        <section class="py-12 sm:py-20">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 dancing-font text-pink-600">Our Journey</h2>
+                <div class="w-16 sm:w-20 h-1 bg-pink-400 mx-auto"></div>
+            </div>
+            
+            <div class="max-w-2xl mx-auto px-4 sm:px-0">
+                <div class="timeline-item">
+                    <div class="timeline-dot"><i class="fas fa-heart"></i></div>
+                    <div class="timeline-content bg-white p-4 sm:p-6 rounded-lg shadow">
+                        <h3 class="font-bold text-lg sm:text-xl mb-2">The First Meet</h3>
+                        <p class="text-sm sm:text-base text-gray-700">5th Grade : Wo din Jab Mujhe Duniya ki sabse Pyarii Chiz dikhi..</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"><i class="fas fa-star"></i></div>
+                    <div class="timeline-content bg-white p-4 sm:p-6 rounded-lg shadow">
+                        <h3 class="font-bold text-lg sm:text-xl mb-2">First Date</h3>
+                        <p class="text-sm sm:text-base text-gray-700">The Day When We Serious about us is 11 July..</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"><i class="fas fa-music"></i></div>
+                    <div class="timeline-content bg-white p-4 sm:p-6 rounded-lg shadow">
+                        <h3 class="font-bold text-lg sm:text-xl mb-2">And About You</h3>
+                        <p class="text-sm sm:text-base text-gray-700">You are the best in everything. You are best Sister Friend Daughter And Best Cousin. Aur Mere liye to tu best hi haii..</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"><i class="fas fa-birthday-cake"></i></div>
+                    <div class="timeline-content bg-white p-4 sm:p-6 rounded-lg shadow">
+                        <h3 class="font-bold text-lg sm:text-xl mb-2">Your Birthday</h3>
+                        <p class="text-sm sm:text-base text-gray-700">Today - celebrating you and all the joy you bring to my life and everyone around you.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Promise Section -->
+      
+        
+        <!-- Responsive Promise Section -->
+<div class="relative h-auto min-h-screen w-full overflow-hidden bg-#F5CBCB flex items-center justify-center py-12 sm:py-20 px-4">
+  <!-- Floating Hearts Background -->
+  <div id="floating-hearts"></div>
+  
+  <!-- Main Content Container -->
+  <div class="relative z-10 w-full max-w-4xl px-4">
+    <!-- Couple Image -->
+    <div class="flex justify-center mb-8 sm:mb-12">
+      <div id="couple-image" class="relative w-64 h-64 sm:w-80 sm:h-80 opacity-0 transform -translate-y-10">
+        <img src="assets/Propose2.png" alt="Couple" class="w-full h-full object-contain drop-shadow-2xl">
+        
+        <!-- Floating Hearts Around Image -->
+        <div class="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 text-3xl sm:text-4xl text-pink-400 opacity-70 animate-float">❤️</div>
+        <div class="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 text-3xl sm:text-4xl text-pink-400 opacity-70 animate-float-2">❤️</div>
+        <div class="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 text-3xl sm:text-4xl text-pink-400 opacity-70 animate-float-3">❤️</div>
+        <div class="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 text-3xl sm:text-4xl text-pink-400 opacity-70 animate-float">❤️</div>
+      </div>
+    </div>
+    
+    <!-- Promise Message -->
+    <div id="promise-text" class="text-center opacity-0 transform translate-y-10">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-dancing font-bold text-pink-700 mb-4 sm:mb-6">
+        <br>
+        I Promise You
+      </h2>
+      <div class="relative inline-block">
+        <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-cormorant text-gray-800 bg-white bg-opacity-80 rounded-lg px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-6 shadow-lg">
+          I Will Always Be With You For Life
+        </p>
+        <!-- Animated underline -->
+        <div id="promise-underline" class="absolute bottom-1 sm:bottom-2 left-0 h-1 bg-pink-500 w-0"></div>
+      </div>
+    </div>
+    
+    <!-- Signature -->
+    <div id="signature" class="text-center mt-8 sm:mt-12 opacity-0">
+      <p class="text-lg sm:text-xl font-dancing text-pink-700 inline-block border-t-2 border-pink-300 pt-2 px-6 sm:px-8">
+        Forever Yours
+      </p>
+    </div>
+  </div>
+  
+  <!-- Rose Petals -->
+  <div id="rose-petals" class="absolute inset-0 pointer-events-none"></div>
+</div>
+
+<style>
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .animate-float-2 {
+    animation: float 4s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+  .animate-float-3 {
+    animation: float 5s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(5deg); }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .animate-float, 
+    .animate-float-2, 
+    .animate-float-3 {
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    #couple-image {
+      width: 56vw;
+      height: 56vw;
+      max-width: 280px;
+      max-height: 280px;
+    }
+    
+    #promise-text h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+    
+    #promise-text p {
+      font-size: 1.1rem;
+      padding: 1rem 1.5rem;
+    }
+  }
+
+  @media (max-width: 400px) {
+    #promise-text h2 {
+      font-size: 1.5rem;
+    }
+    
+    #promise-text p {
+      font-size: 1rem;
+      padding: 0.75rem 1rem;
+    }
+    
+    #signature {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Create floating hearts background
+    const heartsContainer = document.getElementById('floating-hearts');
+    const heartCount = window.innerWidth < 768 ? 12 : 20; // Fewer hearts on mobile
+    
+    for (let i = 0; i < heartCount; i++) {
+      const heart = document.createElement('div');
+      heart.innerHTML = '❤️';
+      heart.className = 'absolute text-pink-300 opacity-50 text-xl sm:text-2xl';
+      heart.style.left = `${Math.random() * 100}%';
+      heart.style.top = "${Math.random() * 100}%"";
+      heart.style.animation = "float ${3 + Math.random() * 4}s ease-in-out infinit"`;
+      heart.style.animationDelay = `${Math.random() * 5}s`;
+      heartsContainer.appendChild(heart);
+    }
+    
+    // Create rose petals - fewer on mobile
+    const petalsContainer = document.getElementById('rose-petals');
+    const petalCount = window.innerWidth < 768 ? 8 : 15;
+    
+    for (let i = 0; i < petalCount; i++) {
+      const petal = document.createElement('div');
+      petal.className = 'absolute bg-pink-200 w-6 h-6 sm:w-8 sm:h-8 opacity-70';
+      petal.style.left = '${Math.random() * 100}%';
+      petal.style.top = `-10%`;
+      petal.style.clipPath = 'polygon(50% 0%, 0% 100%, 100% 100%)';
+      
+      // Faster falling on mobile
+      const duration = window.innerWidth < 768 ? 
+        (6 + Math.random() * 4) : 
+        (8 + Math.random() * 5);
+      
+      petal.style.animation = `falling ${duration}s linear infinite`;
+      petal.style.animationDelay = `${Math.random() * 5}s`;
+      petalsContainer.appendChild(petal);
+    }
+    
+    // Animation timeline
+    const tl = gsap.timeline({ 
+      defaults: { 
+        ease: "power2.out",
+        duration: window.innerWidth < 768 ? 1 : 1.5 // Shorter on mobile
+      } 
+    });
+    
+    // Animate couple image
+    tl.to("#couple-image", {
+      opacity: 1,
+      y: 0
+    });
+    
+    // Animate promise text
+    tl.to("#promise-text", {
+      opacity: 1,
+      y: 0,
+      duration: window.innerWidth < 768 ? 0.8 : 1
+    }, "-=0.3");
+    
+    // Animate underline
+    tl.to("#promise-underline", {
+      width: "100%",
+      duration: window.innerWidth < 768 ? 1 : 1.5
+    });
+    
+    // Animate signature
+    tl.to("#signature", {
+      opacity: 1,
+      duration: window.innerWidth < 768 ? 0.8 : 1
+    });
+    
+    // Continuous animations - less movement on mobile
+    gsap.to("#couple-image", {
+      y: window.innerWidth < 768 ? -5 : -10,
+      duration: 3,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
+    
+    // Add falling animation for petals
+    const petals = document.querySelectorAll('#rose-petals > div');
+    petals.forEach(petal => {
+      gsap.to(petal, {
+        y: "110vh",
+        rotation: 360,
+        duration: parseFloat(petal.style.animationDuration),
+        repeat: -1,
+        ease: "none"
+      });
+    });
+  });
+
+  // Handle window resize
+  window.addEventListener('resize', function() {
+    // You could add additional responsive behaviors here if needed
+    // For example, adjust animation speeds based on viewport size
+  });
+</script>
+        
+        <!-- Beautiful Animated Image Section -->
+        <div class="relative min-h-screen flex items-center justify-center bg-#F5CBCB p-4">
+            <!-- Floating decorative elements -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="absolute top-20 left-10 w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-rose-200 opacity-20 animate-float"></div>
+                <div class="absolute bottom-32 right-16 w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-pink-300 opacity-20 animate-float-2"></div>
+                <div class="absolute top-1/3 right-1/4 w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-rose-300 opacity-15 animate-float-3"></div>
+            </div>
+
+            <!-- Main image container -->
+            <div class="relative max-w-2xl w-full">
+                <!-- Animated border -->
+                <div class="absolute -inset-2 sm:-inset-4 rounded-2xl sm:rounded-3xl border-4 sm:border-8 border-transparent animate-border-rotate pointer-events-none"></div>
+                
+                <!-- Image frame with layered shadows -->
+                <div class="relative overflow-hidden rounded-xl sm:rounded-2xl shadow-xl group">
+                    <!-- Main image -->
+                    <img 
+                        src="assets/kanha.png" 
+                        alt="Beautiful portrait" 
+                        class="w-full h-auto max-h-[70vh] object-contain transform group-hover:scale-105 transition-transform duration-1000 ease-out"
+                    >
+                </div>
+                
+                <!-- Decorative corner elements -->
+                <div class="absolute -top-2 -left-2 sm:-top-4 sm:-left-4 w-10 h-10 sm:w-16 sm:h-16 border-t-2 border-l-2 sm:border-t-4 sm:border-l-4 border-rose-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-10 h-10 sm:w-16 sm:h-16 border-t-2 border-r-2 sm:border-t-4 sm:border-r-4 border-rose-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 w-10 h-10 sm:w-16 sm:h-16 border-b-2 border-l-2 sm:border-b-4 sm:border-l-4 border-rose-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 w-10 h-10 sm:w-16 sm:h-16 border-b-2 border-r-2 sm:border-b-4 sm:border-r-4 border-rose-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+
+            <!-- Floating hearts -->
+            <div class="absolute bottom-4 right-4 sm:bottom-8 sm:right-8 flex space-x-1 sm:space-x-2">
+                <span class="text-2xl sm:text-3xl text-rose-400 animate-heartbeat">❤️</span>
+                <span class="text-2xl sm:text-3xl text-rose-400 animate-heartbeat-2">❤️</span>
+                <span class="text-2xl sm:text-3xl text-rose-400 animate-heartbeat-3">❤️</span>
+            </div>
+        </div>
+        
+        <!-- Final Message -->
+        <section class="py-12 sm:py-20 m-4 sm:m-8 md:m-12 lg:m-20 text-center bg-pink-50 rounded-2xl sm:rounded-3xl px-4 sm:px-6">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 dancing-font text-pink-600">To The Love of My Life</h2>
+                <p class="text-lg sm:text-xl mb-6 sm:mb-8">Kashish, you're the most beautiful person I know - inside and out. Your kindness, intelligence, and beauty leave me in awe every single day.</p>
+                <p class="text-lg sm:text-xl mb-6 sm:mb-8">On your birthday, I want to promise you that I'll always be there for you, through every laugh and every tear. Your happiness is my happiness.</p>
+                <p class="text-xl sm:text-2xl font-semibold dancing-font text-pink-600">Happy Birthday, my love! May all your dreams come true.</p>
+                <div class="mt-8 sm:mt-12">
+                    <div class="heart mx-auto"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="bg-pink-600 text-white py-6 sm:py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="dancing-font text-xl sm:text-2xl mb-3 sm:mb-4">Made with ❤️ for Kashish</p>
+            <p class="text-xs sm:text-sm">© 2025 Birthday Special. All rights reserved.</p>
+        </div>
+    </footer>
+    
     <script>
+        // Music Player Functionality
+        const audioPlayer = document.getElementById('audio-player');
+        const playPauseBtn = document.getElementById('play-pause');
+        const playIcon = document.getElementById('play-icon');
+        const vinyl = document.getElementById('vinyl');
+        const musicPlayer = document.getElementById('music-player');
+        
+        let isPlaying = false;
+        
+        playPauseBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            
+            if (isPlaying) {
+                audioPlayer.pause();
+                playIcon.classList.remove('fa-pause');
+                playIcon.classList.add('fa-play');
+                musicPlayer.classList.remove('player-active');
+            } else {
+                audioPlayer.play();
+                playIcon.classList.remove('fa-play');
+                playIcon.classList.add('fa-pause');
+                musicPlayer.classList.add('player-active');
+            }
+            isPlaying = !isPlaying;
+        });
+        
+        // Allow clicking anywhere on the player to play/pause
+        musicPlayer.addEventListener('click', function() {
+            playPauseBtn.click();
+        });
+        
         // Typewriter Effect
         document.addEventListener('DOMContentLoaded', function() {
             const typedTextSpan = document.querySelector('.typed-text');
@@ -727,654 +1123,140 @@
                     scalar: 1.5
                 });
             });
-        });
-    </script>
-</section>
-        
-        <!-- Birthday Wishes Section -->
-        <section id="wishes" class="py-20">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 dancing-font text-pink-600">Special Wishes for You</h2>
-                <div class="w-20 h-1 bg-pink-400 mx-auto"></div>
-            </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="message-box p-6">
-                    <div class="text-5xl text-pink-500 mb-4"><i class="fas fa-heart"></i></div>
-                    <h3 class="text-xl font-bold mb-3">My Beautiful Kashish</h3>
-                    <p class="text-gray-700">On your birthday, I want you to know how much you mean to me. Your smile brightens my darkest days and your love fills my life with joy.</p>
-                </div>
-                
-                <div class="message-box p-6">
-                    <div class="text-5xl text-pink-500 mb-4"><i class="fas fa-star"></i></div>
-                    <h3 class="text-xl font-bold mb-3">You're Amazing</h3>
-                    <p class="text-gray-700">Your kindness, intelligence, and beauty inspire me every day. I'm so grateful to have you in my life. May all your dreams come true!</p>
-                </div>
-                
-                <div class="message-box p-6">
-                    <div class="text-5xl text-pink-500 mb-4"><i class="fas fa-birthday-cake"></i></div>
-                    <h3 class="text-xl font-bold mb-3">Happy Birthday!</h3>
-                    <p class="text-gray-700">May this year bring you endless happiness, success in all you do, and love that grows stronger with each passing day.</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Photo Gallery Section -->
-        <section class="py-20">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 dancing-font text-pink-600">Beautiful Memories</h2>
-                <div class="w-20 h-1 bg-pink-400 mx-auto"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="polaroid">
-                    <div class="photo-frame overflow-hidden rounded">
-                        <img src="assets/3.jpg" alt="Kashish" class="w-full h-64 object-cover">
-                    </div>
-                    <div class="polaroid-caption">My Sunshine</div>
-                </div>
-                
-                <div class="polaroid">
-                    <div class="photo-frame overflow-hidden rounded">
-                        <img src="assets/2.png" alt="Kashish" class="w-full h-64 object-cover">
-                    </div>
-                    <div class="polaroid-caption">Beautiful Smile</div>
-                </div>
-                
-                <div class="polaroid">
-                    <div class="photo-frame overflow-hidden rounded">
-                        <img src="assets/4.jpg" alt="Kashish" class="w-full h-64 object-cover">
-                    </div>
-                    <div class="polaroid-caption">My Love</div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Portrait Section -->
-        <section class="py-20">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="w-full md:w-1/2">
-                    <div class="photo-frame overflow-hidden rounded-lg shadow-xl">
-                        <img src="assets/6.png" alt="Kashish Portrait" class="w-full h-auto">
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2">
-                    <h2 class="text-4xl font-bold mb-6 dancing-font text-pink-600">My Dearest Kashish</h2>
-                    <p class="text-lg mb-6">This portrait captures your essence perfectly - beautiful, elegant, and full of life. Every time I look at you, I'm reminded of how lucky I am to have you in my life.</p>
-                    <p class="text-lg mb-6">Your eyes shine brighter than the stars, and your smile warms my heart like the morning sun. You're my everything.</p>
-                    <button class="px-6 py-2 bg-pink-500 text-white rounded-full font-semibold hover:bg-pink-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
-                        More About You
-                    </button>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Gift Section -->
-        <section class="py-20 text-center">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 dancing-font text-pink-600">A Special Gift for You</h2>
-                <div class="w-20 h-1 bg-pink-400 mx-auto"></div>
-            </div>
-            
-            <div class="flex justify-center mb-12">
-                <div class="gift-box" id="gift-box">
-                    <div class="gift-lid"></div>
-                    <div class="gift-bow"></div>
-                    <div class="gift-bow-center"></div>
-                    <div class="gift-body"></div>
-                    <div class="gift-content">
-                        <div class="text-center p-4">
-                            <i class="fas fa-heart text-4xl text-pink-500 mb-2"></i>
-                            <p class="font-bold">My Love is Your Gift!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <p class="text-xl max-w-2xl mx-auto">Click on the gift box to open your special present! This is just a small token of how much you mean to me.</p>
-        </section>
-        
-        <!-- Timeline Section -->
-        <section class="py-20">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 dancing-font text-pink-600">Our Journey</h2>
-                <div class="w-20 h-1 bg-pink-400 mx-auto"></div>
-            </div>
-            
-            <div class="max-w-2xl mx-auto">
-                <div class="timeline-item">
-                    <div class="timeline-dot"><i class="fas fa-heart"></i></div>
-                    <div class="timeline-content bg-white p-6 rounded-lg shadow">
-                        <h3 class="font-bold text-xl mb-2">The First Meet</h3>
-                        <p class="text-gray-700">5th Grade : Wo din Jab Mujhe Duniya ki sabse Pyarii Chiz dikhi..</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"><i class="fas fa-star"></i></div>
-                    <div class="timeline-content bg-white p-6 rounded-lg shadow">
-                        <h3 class="font-bold text-xl mb-2">First Date</h3>
-                        <p class="text-gray-700">The Day When We Serious about us is 11 July..</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"><i class="fas fa-music"></i></div>
-                    <div class="timeline-content bg-white p-6 rounded-lg shadow">
-                        <h3 class="font-bold text-xl mb-2">And About You</h3>
-                        <p class="text-gray-700">You are the best in everything. You are best Sister Friend Daughter And Best Cousin. Aur Mere liye to tu best hi haii..</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"><i class="fas fa-birthday-cake"></i></div>
-                    <div class="timeline-content bg-white p-6 rounded-lg shadow">
-                        <h3 class="font-bold text-xl mb-2">Your Birthday</h3>
-                        <p class="text-gray-700">Today - celebrating you and all the joy you bring to my life and everyone around you.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-<!-- Promise Section -->
-<div class="relative h-screen w-full overflow-hidden bg-#F5CBCB from-pink-50 to-pink-100 flex items-center justify-center">
-  <!-- Floating Hearts Background -->
-  <div id="floating-hearts"></div>
-  
-  <!-- Main Content Container -->
-  <div class="relative z-10 w-full max-w-4xl px-4">
-    <!-- Couple Image -->
-    <div class="flex justify-center mb-12">
-      <div id="couple-image" class="relative w-100 h-100 md:w-80 md:h-80 opacity-0 transform -translate-y-10">
-        <!-- Replace with your couple image -->
-        <img src="assets/Propose2.png" alt="Couple" class="w-100 h-90  mb-20 object-contain drop-shadow-2xl">
-        
-        <!-- Floating Hearts Around Image -->
-        <div class="absolute -top-6 -left-6 text-4xl text-pink-400 opacity-70 animate-float">❤️</div>
-        <div class="absolute -bottom-6 -right-6 text-4xl text-pink-400 opacity-70 animate-float-2">❤️</div>
-        <div class="absolute -top-6 -right-6 text-4xl text-pink-400 opacity-70 animate-float-3">❤️</div>
-        <div class="absolute -bottom-6 -left-6 text-4xl text-pink-400 opacity-70 animate-float">❤️</div>
-      </div>
-    </div>
-    
-    <!-- Promise Message -->
-    <div id="promise-text" class="text-center opacity-0 transform translate-y-10">
-        <span></span>
-        
-      <h2 class="text-3xl md:text-5xl font-dancing font-bold text-pink-700 mb-6">
-        <br>
-        I Promise You
-      </h2>
-      <div class="relative inline-block">
-        <p class="text-xl md:text-3xl font-cormorant text-gray-800 bg-white bg-opacity-80 rounded-lg px-8 py-6 shadow-lg">
-          I Will Always Be With You For Life
-        </p>
-        <!-- Animated underline -->
-        <div id="promise-underline" class="absolute bottom-2 left-0 h-1 bg-pink-500 w-0"></div>
-      </div>
-    </div>
-    
-    <!-- Signature -->
-    <div id="signature" class="text-center mt-12 opacity-0">
-      <p class="text-xl font-dancing text-pink-700 inline-block border-t-2 border-pink-300 pt-2 px-8">
-        Forever Yours
-      </p>
-    </div>
-  </div>
-  
-  <!-- Rose Petals -->
-  <div id="rose-petals" class="absolute inset-0 pointer-events-none"></div>
-</div>
-
-<style>
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-  .animate-float-2 {
-    animation: float 4s ease-in-out infinite;
-    animation-delay: 1s;
-  }
-  .animate-float-3 {
-    animation: float 5s ease-in-out infinite;
-    animation-delay: 2s;
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(5deg); }
-  }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Create floating hearts background
-    const heartsContainer = document.getElementById('floating-hearts');
-    for (let i = 0; i < 20; i++) {
-      const heart = document.createElement('div');
-      heart.innerHTML = '❤️';
-      heart.className = 'absolute text-pink-300 opacity-50 text-2xl';
-      heart.style.left = `${Math.random() * 100}%`;
-      heart.style.top = `${Math.random() * 100}%`;
-      heart.style.animation = `float ${3 + Math.random() * 4}s ease-in-out infinite`;
-      heart.style.animationDelay = `${Math.random() * 5}s`;
-      heartsContainer.appendChild(heart);
-    }
-    
-    // Create rose petals
-    const petalsContainer = document.getElementById('rose-petals');
-    for (let i = 0; i < 15; i++) {
-      const petal = document.createElement('div');
-      petal.className = 'absolute bg-pink-200 w-8 h-8 opacity-70';
-      petal.style.left = `${Math.random() * 100}%`;
-      petal.style.top = `-10%`;
-      petal.style.clipPath = 'polygon(50% 0%, 0% 100%, 100% 100%)';
-      petal.style.animation = `falling ${8 + Math.random() * 5}s linear infinite`;
-      petal.style.animationDelay = `${Math.random() * 5}s`;
-      petalsContainer.appendChild(petal);
-    }
-    
-    // Animation timeline
-    const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
-    
-    // Animate couple image
-    tl.to("#couple-image", {
-      opacity: 1,
-      y: 0,
-      duration: 1.5
-    });
-    
-    // Animate promise text
-    tl.to("#promise-text", {
-      opacity: 1,
-      y: 0,
-      duration: 1
-    }, "-=0.5");
-    
-    // Animate underline
-    tl.to("#promise-underline", {
-      width: "100%",
-      duration: 1.5
-    });
-    
-    // Animate signature
-    tl.to("#signature", {
-      opacity: 1,
-      duration: 1
-    });
-    
-    // Continuous animations
-    gsap.to("#couple-image", {
-      y: -10,
-      duration: 3,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
-    });
-    
-    // Falling petals animation
-    gsap.to(".rose-petal", {
-      y: "110vh",
-      rotation: 360,
-      duration: 15,
-      stagger: 0.5,
-      repeat: -1,
-      ease: "none"
-    });
-  });
-</script>
-      
-<!-- Beautiful Animated Image Section -->
-<div class="relative min-h-screen flex items-center justify-center bg-#F5CBCB from-pink-50 to-rose-100 p-4">
-  <!-- Floating decorative elements -->
-  <div class="absolute inset-0 overflow-hidden">
-    <div class="absolute top-20 left-10 w-16 h-16 rounded-full bg-rose-200 opacity-20 animate-float"></div>
-    <div class="absolute bottom-32 right-16 w-24 h-24 rounded-full bg-pink-300 opacity-20 animate-float-2"></div>
-    <div class="absolute top-1/3 right-1/4 w-20 h-20 rounded-full bg-rose-300 opacity-15 animate-float-3"></div>
-  </div>
-
-  <!-- Main image container -->
-  <div class="relative max-w-2xl mb-30 w-80vw">
-    <!-- Animated border -->
-    <div class="absolute -inset-4 rounded-3xl border-8 border-transparent animate-border-rotate pointer-events-none"></div>
-    
-    <!-- Image frame with layered shadows -->
-    <div class="relative overflow-hidden rounded-2xl shadow-xl group">
-      <!-- Main image -->
-      <img 
-        src="assets/kanha.png" 
-        alt="Beautiful portrait" 
-        class="w-20vw h-50vh object-cover transform group-hover:scale-105 transition-transform duration-1000 ease-out"
-      >
-      
-      <!-- Overlay text -->
-     <div id="sparkles-container" class="absolute top-0 left-0 w-full h-full pointer-events-none"></div>
-    </div>
-    
-    <!-- Decorative corner elements -->
-    <div class="absolute -top-4 -left-4 w-16 h-16 border-t-4 border-l-4 border-rose-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-    <div class="absolute -top-4 -right-4 w-16 h-16 border-t-4 border-r-4 border-rose-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-    <div class="absolute -bottom-4 -left-4 w-16 h-16 border-b-4 border-l-4 border-rose-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-    <div class="absolute -bottom-4 -right-4 w-16 h-16 border-b-4 border-r-4 border-rose-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-  </div>
-
-  <!-- Floating hearts -->
-  <div class="absolute bottom-8 right-8 flex space-x-2">
-    <span class="text-3xl text-rose-400 animate-heartbeat">❤️</span>
-    <span class="text-3xl text-rose-400 animate-heartbeat-2">❤️</span>
-    <span class="text-3xl text-rose-400 animate-heartbeat-3">❤️</span>
-  </div>
-</div>
-
-<style>
-  @keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(5deg); }
-  }
-  @keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-  }
-  @keyframes border-rotate {
-    0% { border-image: linear-gradient(0deg, #f9a8d4, #f472b6) 1; }
-    25% { border-image: linear-gradient(90deg, #f9a8d4, #f472b6) 1; }
-    50% { border-image: linear-gradient(180deg, #f9a8d4, #f472b6) 1; }
-    75% { border-image: linear-gradient(270deg, #f9a8d4, #f472b6) 1; }
-    100% { border-image: linear-gradient(360deg, #f9a8d4, #f472b6) 1; }
-  }
-  .animate-float {
-    animation: float 8s ease-in-out infinite;
-  }
-  .animate-float-2 {
-    animation: float 6s ease-in-out infinite;
-    animation-delay: 1s;
-  }
-  .animate-float-3 {
-    animation: float 7s ease-in-out infinite;
-    animation-delay: 2s;
-  }
-  .animate-heartbeat {
-    animation: heartbeat 2s ease-in-out infinite;
-  }
-  .animate-heartbeat-2 {
-    animation: heartbeat 2.3s ease-in-out infinite;
-    animation-delay: 0.3s;
-  }
-  .animate-heartbeat-3 {
-    animation: heartbeat 2.6s ease-in-out infinite;
-    animation-delay: 0.6s;
-  }
-  .animate-border-rotate {
-    animation: border-rotate 8s linear infinite;
-    border-image-slice: 1;
-  }
-</style>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Add floating particles
-    const container = document.querySelector('.relative');
-    for (let i = 0; i < 15; i++) {
-      const particle = document.createElement('div');
-      particle.className = 'absolute rounded-full bg-rose-300 opacity-20';
-      particle.style.width = `${Math.random() * 10 + 5}px`;
-      particle.style.height = particle.style.width;
-      particle.style.left = `${Math.random() * 100}%`;
-      particle.style.top = `${Math.random() * 100}%`;
-      particle.style.animation = `float ${Math.random() * 10 + 5}s ease-in-out infinite`;
-      container.appendChild(particle);
-    }
-
-    // GSAP animations for extra polish
-    gsap.from(".rounded-2xl", {
-      opacity: 0,
-      y: 40,
-      duration: 1.5,
-      ease: "back.out(1.7)"
-    });
-
-    gsap.to(".animate-border-rotate", {
-      borderWidth: "8px",
-      duration: 1,
-      delay: 0.5
-    });
-  });
-</script>
-
-                            <!-- Final Message -->
-        <section class="py-20 m-20 text-center bg-pink-50 rounded-3xl px-6">
-            <div class="max-w-3xl mx-auto">
-                <h2 class="text-4xl font-bold mb-8 dancing-font text-pink-600">To The Love of My Life</h2>
-                <p class="text-xl mb-8">Kashish, you're the most beautiful person I know - inside and out. Your kindness, intelligence, and beauty leave me in awe every single day.</p>
-                <p class="text-xl mb-8">On your birthday, I want to promise you that I'll always be there for you, through every laugh and every tear. Your happiness is my happiness.</p>
-                <p class="text-2xl font-semibold dancing-font text-pink-600">Happy Birthday, my love! May all your dreams come true.</p>
-                <div class="mt-12">
-                    <div class="heart mx-auto"></div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-
-    
-    <!-- Footer -->
-    <footer class="bg-pink-600 text-white py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="dancing-font text-2xl mb-4">Made with ❤️ for Kashish</p>
-            <p class="text-sm">© 2025 Birthday Special. All rights reserved.</p>
-        </div>
-    </footer>
-    
-    <script>
-        // Music Player Functionality
-        const audioPlayer = document.getElementById('audio-player');
-        const playPauseBtn = document.getElementById('play-pause');
-        const playIcon = document.getElementById('play-icon');
-        const progressBar = document.getElementById('progress-bar');
-        const currentTimeDisplay = document.getElementById('current-time');
-        const vinyl = document.getElementById('vinyl');
-        const musicPlayer = document.getElementById('music-player');
-        
-        let isPlaying = false;
-        
-        playPauseBtn.addEventListener('click', function() {
-            if (isPlaying) {
-                audioPlayer.pause();
-                playIcon.classList.remove('fa-pause');
-                playIcon.classList.add('fa-play');
-                musicPlayer.classList.remove('player-active');
-            } else {
-                audioPlayer.play();
-                playIcon.classList.remove('fa-play');
-                playIcon.classList.add('fa-pause');
-                musicPlayer.classList.add('player-active');
+            // Create floating hearts background
+            const heartsContainer = document.getElementById('floating-hearts');
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.className = 'absolute text-pink-300 opacity-50 text-xl sm:text-2xl';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.top = `${Math.random() * 100}%`;
+                heart.style.animation = `float ${3 + Math.random() * 4}s ease-in-out infinite`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                heartsContainer.appendChild(heart);
             }
-            isPlaying = !isPlaying;
-        });
-        
-        audioPlayer.addEventListener('timeupdate', function() {
-            const currentTime = audioPlayer.currentTime;
-            const duration = audioPlayer.duration;
-            const progressPercent = (currentTime / duration) * 100;
-            progressBar.style.width = `${progressPercent}%`;
             
-            // Update current time display
-            const minutes = Math.floor(currentTime / 60);
-            const seconds = Math.floor(currentTime % 60);
-            currentTimeDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        });
-        
-        // Click for Confetti
-        const confettiBtn = document.getElementById('confetti-btn');
-        confettiBtn.addEventListener('click', function() {
-            confetti({
-                particleCount: 150,
-                spread: 70,
-                origin: { y: 0.6 },
-                colors: ['#ff3366', '#ff6699', '#ff99cc', '#F5CBCB']
+            // Create rose petals
+            const petalsContainer = document.getElementById('rose-petals');
+            for (let i = 0; i < 15; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'absolute bg-pink-200 w-6 h-6 sm:w-8 sm:h-8 opacity-70';
+                petal.style.left = `${Math.random() * 100}%`;
+                petal.style.top = `-10%`;
+                petal.style.clipPath = 'polygon(50% 0%, 0% 100%, 100% 100%)';
+                petal.style.animation = `falling ${8 + Math.random() * 5}s linear infinite`;
+                petal.style.animationDelay = `${Math.random() * 5}s`;
+                petalsContainer.appendChild(petal);
+            }
+            
+            // Gift Box Animation
+            const giftBox = document.getElementById('gift-box');
+            giftBox.addEventListener('click', function() {
+                giftBox.classList.toggle('gift-open');
+                
+                if (giftBox.classList.contains('gift-open')) {
+                    confetti({
+                        particleCount: 100,
+                        spread: 60,
+                        origin: { y: 0.6 },
+                        colors: ['#ff3366', '#ff6699', '#ff99cc', '#F5CBCB']
+                    });
+                    
+                    // Play a chime sound
+                    const giftAudio = new Audio('assets/song.mp3');
+                    giftAudio.play();
+                }
             });
             
             // Create floating hearts
-            createHearts(30);
-        });
-        
-        // Gift Box Animation
-        const giftBox = document.getElementById('gift-box');
-        giftBox.addEventListener('click', function() {
-            giftBox.classList.toggle('gift-open');
-            
-            if (giftBox.classList.contains('gift-open')) {
-                confetti({
-                    particleCount: 100,
-                    spread: 60,
-                    origin: { y: 0.6 },
-                    colors: ['#ff3366', '#ff6699', '#ff99cc', '#F5CBCB']
-                });
+            function createHearts(count) {
+                const container = document.getElementById('hearts-container');
                 
-                // Play a chime sound
-                const giftAudio = new Audio('assets/song.mp3');
-                giftAudio.play();
-            }
-        });
-        
-        // Create floating hearts
-        function createHearts(count) {
-            const container = document.getElementById('hearts-container');
-            
-            for (let i = 0; i < count; i++) {
-                const heart = document.createElement('div');
-                heart.classList.add('heart-particle');
-                
-                // Random position
-                const posX = Math.random() * window.innerWidth;
-                const posY = window.innerHeight + 50;
-                heart.style.left = `${posX}px`;
-                heart.style.top = `${posY}px`;
-                
-                // Random size
-                const size = Math.random() * 20 + 10;
-                heart.style.width = `${size}px`;
-                heart.style.height = `${size}px`;
-                
-                container.appendChild(heart);
-                
-                // Animate heart
-                anime({
-                    targets: heart,
-                    translateY: [-50, -window.innerHeight - 100],
-                    translateX: [0, Math.random() * 200 - 100],
-                    opacity: [
-                        { value: 1, duration: 100 },
-                        { value: 0, duration: 1000 }
-                    ],
-                    duration: Math.random() * 3000 + 2000,
-                    easing: 'easeOutQuad',
-                    complete: function() {
-                        heart.remove();
-                    }
-                });
-            }
-        }
-        
-        // Create some hearts on load
-        window.addEventListener('load', function() {
-            createHearts(15);
-            
-            // Auto-create hearts every few seconds
-            setInterval(function() {
-                createHearts(5);
-            }, 3000);
-        });
-        
-        // Canvas Animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const canvas = document.getElementById('birthday-canvas');
-            const ctx = canvas.getContext('2d');
-            
-            // Set canvas size
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            
-            // Resize handler
-            window.addEventListener('resize', function() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            });
-            
-            // Particles
-            const particles = [];
-            const particleCount = 50;
-            
-            // Create particles
-            for (let i = 0; i < particleCount; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: Math.random() * 5 + 2,
-                    speedX: Math.random() * 0.5 - 0.25,
-                    speedY: Math.random() * 0.5 - 0.25,
-                    color: `rgba(245, 203, 203, ${Math.random() * 0.5 + 0.1})`
-                });
-            }
-            
-            // Animation loop
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                // Update and draw particles
-                for (let i = 0; i < particles.length; i++) {
-                    const p = particles[i];
+                for (let i = 0; i < count; i++) {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart-particle');
                     
-                    // Update position
-                    p.x += p.speedX;
-                    p.y += p.speedY;
+                    // Random position
+                    const posX = Math.random() * window.innerWidth;
+                    const posY = window.innerHeight + 50;
+                    heart.style.left = `${posX}px`;
+                    heart.style.top = `${posY}px`;
                     
-                    // Wrap around edges
-                    if (p.x < 0) p.x = canvas.width;
-                    if (p.x > canvas.width) p.x = 0;
-                    if (p.y < 0) p.y = canvas.height;
-                    if (p.y > canvas.height) p.y = 0;
+                    // Random size
+                    const size = Math.random() * 20 + 10;
+                    heart.style.width = `${size}px`;
+                    heart.style.height = `${size}px`;
                     
-                    // Draw particle
-                    ctx.fillStyle = p.color;
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-                
-                requestAnimationFrame(animate);
-            }
-            
-            animate();
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
+                    container.appendChild(heart);
                     
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
+                    // Animate heart
+                    anime({
+                        targets: heart,
+                        translateY: [-50, -window.innerHeight - 100],
+                        translateX: [0, Math.random() * 200 - 100],
+                        opacity: [
+                            { value: 1, duration: 100 },
+                            { value: 0, duration: 1000 }
+                        ],
+                        duration: Math.random() * 3000 + 2000,
+                        easing: 'easeOutQuad',
+                        complete: function() {
+                            heart.remove();
+                        }
                     });
-                });
-            });
+                }
+            }
             
-            // Typewriter effect
-            const typewriterElements = document.querySelectorAll('.typewriter');
-            typewriterElements.forEach(el => {
-                const text = el.textContent;
-                el.textContent = '';
+            // Create some hearts on load
+            window.addEventListener('load', function() {
+                createHearts(15);
                 
-                let i = 0;
-                const typing = setInterval(() => {
-                    if (i < text.length) {
-                        el.textContent += text.charAt(i);
-                        i++;
-                    } else {
-                        clearInterval(typing);
-                        el.style.borderRight = 'none';
-                    }
-                }, 100);
+                // Auto-create hearts every few seconds
+                setInterval(function() {
+                    createHearts(5);
+                }, 3000);
             });
             
-            // GSAP Animations
+            // Animation timeline for promise section
+            const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+            
+            // Animate couple image
+            tl.to("#couple-image", {
+                opacity: 1,
+                y: 0,
+                duration: 1.5
+            });
+            
+            // Animate promise text
+            tl.to("#promise-text", {
+                opacity: 1,
+                y: 0,
+                duration: 1
+            }, "-=0.5");
+            
+            // Animate underline
+            tl.to("#promise-underline", {
+                width: "100%",
+                duration: 1.5
+            });
+            
+            // Animate signature
+            tl.to("#signature", {
+                opacity: 1,
+                duration: 1
+            });
+            
+            // Continuous animations
+            gsap.to("#couple-image", {
+                y: -10,
+                duration: 3,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+            
+            // GSAP Animations for other elements
             gsap.from(".heart", {
                 duration: 1.5,
                 scale: 0.5,
@@ -1424,6 +1306,17 @@
                 opacity: 0,
                 stagger: 0.2,
                 ease: "power2.out"
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
             });
         });
     </script>
